@@ -1,0 +1,366 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyP6i8/9i1+6iiFr1PWjhOkD",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/js-valencia/Algebra/blob/main/CodigosAlgebra3x3_class\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7jae8bJGwB_u",
+        "outputId": "0a2d326d-b76a-4a55-9491-c62847a23aa0"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Hora acuat en Ecuador:  2025-10-20 08:15:40\n",
+            "José David Valencia Condoy\n",
+            "Primer ciclo  -  Computación\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{x: 1, y: 2, z: 3}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 1
+        }
+      ],
+      "source": [
+        "from datetime import datetime\n",
+        "from sympy import symbols, Eq, solve\n",
+        "import pytz\n",
+        "\n",
+        "#Definir la zona horaria de Ecuador\n",
+        "ecuador_tz = pytz.timezone(\"America/Guayaquil\")\n",
+        "\n",
+        "#Obtener la hora acutal en Ecuador\n",
+        "hora_actual = datetime.now(ecuador_tz)\n",
+        "\n",
+        "#Imprimir la hora en formato legible\n",
+        "print(\"Hora acuat en Ecuador: \", hora_actual.strftime(\"%Y-%m-%d %H:%M:%S\"))\n",
+        "print(\"José David Valencia Condoy\")\n",
+        "print(\"Primer ciclo  -  Computación\")\n",
+        "\n",
+        "x, y, z = symbols('x y z')\n",
+        "sol = solve([\n",
+        "    Eq(2*x + 3*y + 4*z, 20),\n",
+        "    Eq(3*x - 5*y - z, -10),\n",
+        "    Eq( - x + 2*y + -3*z, -6)\n",
+        "], (x, y, z))\n",
+        "sol"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from datetime import datetime\n",
+        "from sympy import symbols, Eq, solve\n",
+        "import pytz\n",
+        "\n",
+        "#Definir la zona horaria de Ecuador\n",
+        "ecuador_tz = pytz.timezone(\"America/Guayaquil\")\n",
+        "\n",
+        "#Obtener la hora acutal en Ecuador\n",
+        "hora_actual = datetime.now(ecuador_tz)\n",
+        "\n",
+        "#Imprimir la hora en formato legible\n",
+        "print(\"Hora actual en Ecuador: \", hora_actual.strftime(\"%Y-%m-%d %H:%M:%S\"))\n",
+        "print(\"José David Valencia Condoy\")\n",
+        "print(\"Primer ciclo  -  Computación\")\n",
+        "\n",
+        "x, y, z = symbols('x y z')\n",
+        "sol = solve([\n",
+        "    Eq( - x + 3*y + z, 15),\n",
+        "    Eq(5*x - y + 2*z, 2),\n",
+        "    Eq(3*x + 2*y - z, -2)\n",
+        "], (x, y, z))\n",
+        "sol"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "99u-0durxUyt",
+        "outputId": "03305438-b6ef-4d9e-b1c0-07dac1317fde"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Hora actual en Ecuador:  2025-10-20 08:20:03\n",
+            "José David Valencia Condoy\n",
+            "Primer ciclo  -  Computación\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{x: -1, y: 3, z: 5}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from datetime import datetime\n",
+        "from sympy import symbols, Eq, solve\n",
+        "import pytz\n",
+        "\n",
+        "#Definir la zona horaria de Ecuador\n",
+        "ecuador_tz = pytz.timezone(\"America/Guayaquil\")\n",
+        "\n",
+        "#Obtener la hora acutal en Ecuador\n",
+        "hora_actual = datetime.now(ecuador_tz)\n",
+        "\n",
+        "#Imprimir la hora en formato legible\n",
+        "print(\"Hora actual en Ecuador: \", hora_actual.strftime(\"%Y-%m-%d %H:%M:%S\"))\n",
+        "print(\"José David Valencia Condoy\")\n",
+        "print(\"Primer ciclo  -  Computación\")\n",
+        "\n",
+        "x, y, z = symbols('x y z')\n",
+        "sol = solve([\n",
+        "    Eq(2*x + 3*y + 4*z, 20),\n",
+        "    Eq(3*x - 5*y - z, -10),\n",
+        "    Eq( - x + 2*y - 3*z, -6)\n",
+        "], (x, y, z))\n",
+        "sol"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PZvd-EpSx0JK",
+        "outputId": "156398cd-4b9d-43d8-ef43-bc7681ef8170"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Hora actual en Ecuador:  2025-10-20 08:22:01\n",
+            "José David Valencia Condoy\n",
+            "Primer ciclo  -  Computación\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{x: 1, y: 2, z: 3}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 4
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from datetime import datetime\n",
+        "from sympy import symbols, Eq, solve\n",
+        "import pytz\n",
+        "\n",
+        "#Definir la zona horaria de Ecuador\n",
+        "ecuador_tz = pytz.timezone(\"America/Guayaquil\")\n",
+        "\n",
+        "#Obtener la hora acutal en Ecuador\n",
+        "hora_actual = datetime.now(ecuador_tz)\n",
+        "\n",
+        "#Imprimir la hora en formato legible\n",
+        "print(\"Hora actual en Ecuador: \", hora_actual.strftime(\"%Y-%m-%d %H:%M:%S\"))\n",
+        "print(\"José David Valencia Condoy\")\n",
+        "print(\"Primer ciclo  -  Computación\")\n",
+        "\n",
+        "x, y, z = symbols('x y z')\n",
+        "sol = solve([\n",
+        "    Eq(2*x + y + z, 1),\n",
+        "    Eq(3*x + 2*y + 2*z, 3),\n",
+        "    Eq(x - 2*y - z, 0)\n",
+        "], (x, y, z))\n",
+        "sol"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VpfE47gwySpD",
+        "outputId": "a262cac7-e425-40e5-f47a-4d039f4660f6"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Hora actual en Ecuador:  2025-10-20 08:23:56\n",
+            "José David Valencia Condoy\n",
+            "Primer ciclo  -  Computación\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{x: -1, y: -4, z: 7}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from datetime import datetime\n",
+        "from sympy import symbols, Eq, solve\n",
+        "import pytz\n",
+        "\n",
+        "#Definir la zona horaria de Ecuador\n",
+        "ecuador_tz = pytz.timezone(\"America/Guayaquil\")\n",
+        "\n",
+        "#Obtener la hora acutal en Ecuador\n",
+        "hora_actual = datetime.now(ecuador_tz)\n",
+        "\n",
+        "#Imprimir la hora en formato legible\n",
+        "print(\"Hora actual en Ecuador: \", hora_actual.strftime(\"%Y-%m-%d %H:%M:%S\"))\n",
+        "print(\"José David Valencia Condoy\")\n",
+        "print(\"Primer ciclo  -  Computación\")\n",
+        "\n",
+        "x, y, z = symbols('x y z')\n",
+        "sol = solve([\n",
+        "    Eq(x - y + z, 2),\n",
+        "    Eq(x + y + z, 4),\n",
+        "    Eq(2*x + 2*y - z, -4)\n",
+        "], (x, y, z))\n",
+        "sol"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ijRty3QTyopT",
+        "outputId": "c198adeb-d0bc-46f0-cbd0-a0c0c93a4c3f"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Hora actual en Ecuador:  2025-10-20 08:25:26\n",
+            "José David Valencia Condoy\n",
+            "Primer ciclo  -  Computación\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{x: -1, y: 1, z: 4}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from datetime import datetime\n",
+        "from sympy import symbols, Eq, solve\n",
+        "import pytz\n",
+        "\n",
+        "#Definir la zona horaria de Ecuador\n",
+        "ecuador_tz = pytz.timezone(\"America/Guayaquil\")\n",
+        "\n",
+        "#Obtener la hora acutal en Ecuador\n",
+        "hora_actual = datetime.now(ecuador_tz)\n",
+        "\n",
+        "#Imprimir la hora en formato legible\n",
+        "print(\"Hora actual en Ecuador: \", hora_actual.strftime(\"%Y-%m-%d %H:%M:%S\"))\n",
+        "print(\"José David Valencia Condoy\")\n",
+        "print(\"Primer ciclo  -  Computación\")\n",
+        "\n",
+        "x, y, z = symbols('x y z')\n",
+        "sol = solve([\n",
+        "    Eq(x + 2*y - z, 7),\n",
+        "    Eq(x - y + 2*z, -5),\n",
+        "    Eq( - 3*x + y + 4*z, -17)\n",
+        "], (x, y, z))\n",
+        "sol"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "lh-3m_-YzBXK",
+        "outputId": "ed1cd256-d013-481f-9e35-14189b95a061"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Hora actual en Ecuador:  2025-10-20 08:29:10\n",
+            "José David Valencia Condoy\n",
+            "Primer ciclo  -  Computación\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{x: 2, y: 1, z: -3}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 7
+        }
+      ]
+    }
+  ]
+}
