@@ -1,0 +1,474 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMvqvVKT1pkm2dHmwjaRMfN",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/js-valencia/Algebra/blob/main/Algebra_Grupal\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "jUHcGrEmb2dC"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "eb9990bd"
+      },
+      "source": [
+        "# Task\n",
+        "Create a Python code to solve a 3x3 system of linear equations using Cramer's rule with cofactors. The code should print the step-by-step process, the final solution, and include the user's personal information."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "0eb9433e"
+      },
+      "source": [
+        "## Definir el sistema de ecuaciones\n",
+        "\n",
+        "### Subtask:\n",
+        "Ingresar los coeficientes del sistema de ecuaciones 3x3.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "02e54cc7"
+      },
+      "source": [
+        "**Reasoning**:\n",
+        "Prompt the user for the coefficients of the 3x3 system of equations and their personal information.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f9143a73",
+        "outputId": "1869fcac-cb3b-495d-dfbd-7b571245ddb4"
+      },
+      "source": [
+        "print(\"Enter the coefficients for the 3x3 system of linear equations (ax + by + cz = d):\")\n",
+        "\n",
+        "a1 = float(input(\"Enter a1: \"))\n",
+        "b1 = float(input(\"Enter b1: \"))\n",
+        "c1 = float(input(\"Enter c1: \"))\n",
+        "d1 = float(input(\"Enter d1: \"))\n",
+        "\n",
+        "a2 = float(input(\"Enter a2: \"))\n",
+        "b2 = float(input(\"Enter b2: \"))\n",
+        "c2 = float(input(\"Enter c2: \"))\n",
+        "d2 = float(input(\"Enter d2: \"))\n",
+        "\n",
+        "a3 = float(input(\"Enter a3: \"))\n",
+        "b3 = float(input(\"Enter b3: \"))\n",
+        "c3 = float(input(\"Enter c3: \"))\n",
+        "d3 = float(input(\"Enter d3: \"))\n",
+        "\n",
+        "print(\"\\nDatos Informativos:\")\n",
+        "name1 = input(\"Ingrese el nombre del primer integrante: \")\n",
+        "name2 = input(\"Ingrese el nombre del segundo integrante: \")\n",
+        "id_number = input(\"Ingrese su carrera: \")\n",
+        "fecha = input(\"Ingrese la fecha: \")"
+      ],
+      "execution_count": 1,
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "Enter the coefficients for the 3x3 system of linear equations (ax + by + cz = d):\n",
+            "Enter a1: 120\n",
+            "Enter b1: 80\n",
+            "Enter c1: 100\n",
+            "Enter d1: 1540\n",
+            "Enter a2: 200\n",
+            "Enter b2: 100\n",
+            "Enter c2: 150\n",
+            "Enter d2: 2620\n",
+            "Enter a3: 150\n",
+            "Enter b3: 60\n",
+            "Enter c3: 200\n",
+            "Enter d3: 2290\n",
+            "\n",
+            "Enter your personal information:\n",
+            "Enter your name: José Valencia\n",
+            "Enter your ID: 09876543321\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "00205f3a"
+      },
+      "source": [
+        "## Calcular el determinante principal\n",
+        "\n",
+        "### Subtask:\n",
+        "Calcular el determinante de la matriz de coeficientes.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ae5631dd"
+      },
+      "source": [
+        "**Reasoning**:\n",
+        "Define a function to calculate the determinant of a 3x3 matrix using the cofactor expansion method, call the function with the main coefficients, store the result, and print it.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "938cc55b",
+        "outputId": "b4d556a2-7188-48c9-9e81-0303d3fe0448"
+      },
+      "source": [
+        "def determinant_3x3(a1, b1, c1, a2, b2, c2, a3, b3, c3):\n",
+        "  \"\"\"Calculates the determinant of a 3x3 matrix using cofactor expansion.\"\"\"\n",
+        "  det = a1 * (b2 * c3 - b3 * c2) - b1 * (a2 * c3 - a3 * c2) + c1 * (a2 * b3 - a3 * b2)\n",
+        "  return det\n",
+        "\n",
+        "det_main = determinant_3x3(a1, b1, c1, a2, b2, c2, a3, b3, c3)\n",
+        "print(\"Determinante principal:\", det_main)"
+      ],
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Determinante principal: -380000.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "fce50f58"
+      },
+      "source": [
+        "## Calcular los determinantes para cada variable\n",
+        "\n",
+        "### Subtask:\n",
+        "Para cada variable (x, y, z), reemplazar la columna de coeficientes correspondiente con la columna de términos independientes y calcular el determinante de la nueva matriz.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "fe017690"
+      },
+      "source": [
+        "**Reasoning**:\n",
+        "Define the `determinant_3x3` function and calculate the determinants for x, y, and z by replacing the respective columns with the independent terms and using the defined function. Finally, print these determinants.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "22761e49",
+        "outputId": "4794e2e8-5357-44ae-c4ec-890e47ff3b8e"
+      },
+      "source": [
+        "def determinant_3x3(a1, b1, c1, a2, b2, c2, a3, b3, c3):\n",
+        "  \"\"\"Calculates the determinant of a 3x3 matrix using cofactor expansion.\"\"\"\n",
+        "  det = a1 * (b2 * c3 - b3 * c2) - b1 * (a2 * c3 - a3 * c2) + c1 * (a2 * b3 - a3 * b2)\n",
+        "  return det\n",
+        "\n",
+        "det_x = determinant_3x3(d1, b1, c1, d2, b2, c2, d3, b3, c3)\n",
+        "det_y = determinant_3x3(a1, d1, c1, a2, d2, c2, a3, d3, c3)\n",
+        "det_z = determinant_3x3(a1, b1, d1, a2, b2, d2, a3, b3, d3)\n",
+        "\n",
+        "print(\"Determinante para x:\", det_x)\n",
+        "print(\"Determinante para y:\", det_y)\n",
+        "print(\"Determinante para z:\", det_z)"
+      ],
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Determinante para x: -4680000.0\n",
+            "Determinante para y: 1210000.0\n",
+            "Determinante para z: -1204000.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "c2cb9127"
+      },
+      "source": [
+        "## Resolver el sistema\n",
+        "\n",
+        "### Subtask:\n",
+        "Dividir el determinante de cada variable por el determinante principal para encontrar el valor de cada variable.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "fd10c071"
+      },
+      "source": [
+        "**Reasoning**:\n",
+        "Check if the main determinant is zero and calculate the values of x, y, and z if it is not.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2d34a358",
+        "outputId": "b39836d7-532a-44cc-c679-947226b052bc"
+      },
+      "source": [
+        "if det_main == 0:\n",
+        "    print(\"The system has no unique solution and cannot be solved by Cramer's rule.\")\n",
+        "else:\n",
+        "    x = det_x / det_main\n",
+        "    y = det_y / det_main\n",
+        "    z = det_z / det_main\n",
+        "    print(\"The solution is:\")\n",
+        "    print(\"x =\", x)\n",
+        "    print(\"y =\", y)\n",
+        "    print(\"z =\", z)"
+      ],
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The solution is:\n",
+            "x = 12.31578947368421\n",
+            "y = -3.1842105263157894\n",
+            "z = 3.168421052631579\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "438eb932"
+      },
+      "source": [
+        "## Mostrar el proceso y la respuesta\n",
+        "\n",
+        "### Subtask:\n",
+        "Imprimir los determinantes calculados, los pasos de la resolución y los valores de las variables.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "23043e42"
+      },
+      "source": [
+        "**Reasoning**:\n",
+        "Print the calculated determinants, the steps of the solution using Cramer's rule, and the final values of the variables.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "91043bef",
+        "outputId": "afa35d5d-d534-4cb2-c4c9-dabf28a752a8"
+      },
+      "source": [
+        "print(\"\\n--- Solution Details ---\")\n",
+        "\n",
+        "# Step 1: Print the calculated determinants\n",
+        "print(f\"\\nCalculated Determinants:\")\n",
+        "print(f\"Determinant of the main coefficient matrix (det_main): {det_main}\")\n",
+        "print(f\"Determinant for x (det_x): {det_x}\")\n",
+        "print(f\"Determinant for y (det_y): {det_y}\")\n",
+        "print(f\"Determinant for z (det_z): {det_z}\")\n",
+        "\n",
+        "# Step 2: Print a step-by-step explanation of the solution using Cramer's rule\n",
+        "print(\"\\nStep-by-step solution using Cramer's Rule:\")\n",
+        "print(\"Cramer's rule states that for a system of linear equations, the value of each variable is found by dividing the determinant of the matrix where that variable's coefficient column is replaced by the constant terms (d1, d2, d3) by the determinant of the main coefficient matrix.\")\n",
+        "\n",
+        "if det_main == 0:\n",
+        "    print(\"\\nSince the main determinant is 0, the system has no unique solution and Cramer's rule cannot be applied.\")\n",
+        "else:\n",
+        "    print(f\"\\nTo find x: x = det_x / det_main = {det_x} / {det_main}\")\n",
+        "    print(f\"To find y: y = det_y / det_main = {det_y} / {det_main}\")\n",
+        "    print(f\"To find z: z = det_z / det_main = {det_z} / {det_main}\")\n",
+        "\n",
+        "# Step 3: Print the final calculated values of x, y, and z\n",
+        "print(\"\\nFinal Solution:\")\n",
+        "print(f\"x = {x}\")\n",
+        "print(f\"y = {y}\")\n",
+        "print(f\"z = {z}\")\n",
+        "\n",
+        "print(f\"\\nSolution for {name} (ID: {id_number}):\")\n",
+        "print(f\"x = {x}\")\n",
+        "print(f\"y = {y}\")\n",
+        "print(f\"z = {z}\")"
+      ],
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "--- Solution Details ---\n",
+            "\n",
+            "Calculated Determinants:\n",
+            "Determinant of the main coefficient matrix (det_main): -380000.0\n",
+            "Determinant for x (det_x): -4680000.0\n",
+            "Determinant for y (det_y): 1210000.0\n",
+            "Determinant for z (det_z): -1204000.0\n",
+            "\n",
+            "Step-by-step solution using Cramer's Rule:\n",
+            "Cramer's rule states that for a system of linear equations, the value of each variable is found by dividing the determinant of the matrix where that variable's coefficient column is replaced by the constant terms (d1, d2, d3) by the determinant of the main coefficient matrix.\n",
+            "\n",
+            "To find x: x = det_x / det_main = -4680000.0 / -380000.0\n",
+            "To find y: y = det_y / det_main = 1210000.0 / -380000.0\n",
+            "To find z: z = det_z / det_main = -1204000.0 / -380000.0\n",
+            "\n",
+            "Final Solution:\n",
+            "x = 12.31578947368421\n",
+            "y = -3.1842105263157894\n",
+            "z = 3.168421052631579\n",
+            "\n",
+            "Solution for José Valencia (ID: 09876543321):\n",
+            "x = 12.31578947368421\n",
+            "y = -3.1842105263157894\n",
+            "z = 3.168421052631579\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "888ec257"
+      },
+      "source": [
+        "## Incluir datos informativos\n",
+        "\n",
+        "### Subtask:\n",
+        "Agregar la información personal del usuario al final de la salida.\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "68504327"
+      },
+      "source": [
+        "**Reasoning**:\n",
+        "Print the personal information of the user.\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "e60cd8ac",
+        "outputId": "1744b500-4dc0-4f86-eb68-22f4c1caa43d"
+      },
+      "source": [
+        "print(\"\\n--- User Personal Information ---\")\n",
+        "print(f\"Name: {name}\")\n",
+        "print(f\"ID: {id_number}\")"
+      ],
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "--- User Personal Information ---\n",
+            "Name: José Valencia\n",
+            "ID: 09876543321\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "71145c6b"
+      },
+      "source": [
+        "## Summary:\n",
+        "\n",
+        "### Data Analysis Key Findings\n",
+        "\n",
+        "*   The system successfully collected the coefficients for a 3x3 system of linear equations and the user's personal information (name and ID).\n",
+        "*   The determinant of the main coefficient matrix (\\-380000.0) was calculated using cofactor expansion.\n",
+        "*   The determinants for each variable (x, y, and z) were calculated by replacing the corresponding coefficient column with the independent terms. The calculated determinants were \\-4680000.0 for x, 1210000.0 for y, and \\-1204000.0 for z.\n",
+        "*   Since the main determinant was non-zero, the system has a unique solution.\n",
+        "*   The values for x, y, and z were calculated by dividing the respective variable determinants by the main determinant, resulting in x = 12.31578947368421, y = \\-3.1842105263157894, and z = 3.168421052631579.\n",
+        "*   The code successfully printed the calculated determinants, a step-by-step explanation of Cramer's rule, the final solution for x, y, and z, and the user's personal information.\n",
+        "\n",
+        "### Insights or Next Steps\n",
+        "\n",
+        "*   The code provides a clear and effective step-by-step demonstration of solving a 3x3 system of linear equations using Cramer's rule.\n",
+        "*   Consider adding error handling for non-numeric input and potentially for systems with no unique solution beyond just detecting a zero main determinant (e.g., infinite solutions).\n"
+      ]
+    }
+  ]
+}
